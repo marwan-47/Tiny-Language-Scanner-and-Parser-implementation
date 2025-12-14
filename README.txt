@@ -1,136 +1,72 @@
-Here is a professional, well-structured `README.md` file tailored to your project. It covers installation, usage, technical details (BNF grammar), and troubleshooting, which is essential for projects involving Graphviz.
+# TINY Language Compiler
+### Scanner & Recursive Descent Parser with Syntax Tree Visualization
 
-***
+<p align="left">
+  <img src="https://img.shields.io/badge/Python-3.x-blue?style=flat-square" />
+  <img src="https://img.shields.io/badge/GUI-Tkinter-success?style=flat-square" />
+  <img src="https://img.shields.io/badge/Parsing-Recursive%20Descent-orange?style=flat-square" />
+  <img src="https://img.shields.io/badge/AST-Graphviz-yellow?style=flat-square" />
+  <img src="https://img.shields.io/badge/License-Academic-lightgrey?style=flat-square" />
+</p>
 
-# TINY Language Compiler & Visualizer
+---
 
-A Python-based compiler frontend for the **TINY** language. This project implements a **Scanner** (Lexical Analyzer) and a **Recursive Descent Parser** with a full GUI to visualize the generating Syntax Tree using Graphviz.
+## Overview
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Status](https://img.shields.io/badge/Status-Educational-orange)
+This repository contains a **compiler front-end implementation** for the **TINY programming language**, developed using **Python**.  
+The project implements the **Lexical Analysis** and **Syntax Analysis** phases of compilation and provides a **graphical user interface (GUI)** for interactive execution and visualization.
 
-## 📋 Table of Contents
-- [Overview](#-overview)
-- [Features](#-features)
-- [Prerequisites](#-prerequisites)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [TINY Language Grammar](#-tiny-language-grammar)
-- [Project Structure](#-project-structure)
-- [Troubleshooting](#-troubleshooting)
+The compiler constructs an **Abstract Syntax Tree (AST)** using a **Recursive Descent Parser** and visualizes it using **Graphviz**, making the project well-suited for **compiler design education**.
 
-## 📖 Overview
+---
 
-This application reads source code written in the TINY language and performs two major compilation phases:
-1.  **Scanning:** Tokenizes the source code into a sequence of lexemes and token types (Keywords, Identifiers, Numbers, Operators).
-2.  **Parsing:** Constructs an Abstract Syntax Tree (AST) using a recursive descent approach and generates a visual representation of the Syntax Tree.
+## Key Features
 
-It is designed for educational purposes to demonstrate compiler construction concepts.
+- Lexical analysis using a finite-state scanner
+- Recursive descent parsing based on the TINY grammar
+- Abstract Syntax Tree (AST) construction
+- Graph-based AST visualization using Graphviz
+- Integrated graphical user interface (GUI)
+- Step-by-step and full-pipeline execution
+- Lexical and syntax error reporting
+- Light and dark theme support
 
-## ✨ Features
+---
 
-*   **GUI Interface:** A user-friendly Tkinter-based interface with **Dark/Light mode** support.
-*   **Lexical Analysis:** Identifies reserved words (`if`, `then`, `repeat`, etc.), special symbols, numbers, and identifiers.
-*   **Syntax Analysis:** Validates grammar and builds an AST.
-*   **Visualizer:** Renders the Syntax Tree using **Graphviz** with high-quality PNG output.
-*   **Interactive View:** Zoom and pan controls for inspecting large Syntax Trees.
-*   **Pipeline Control:** Run the Scanner only, Parser only, or the full pipeline at once.
-*   **File Handling:** Save/Load source files and token lists.
+## System Architecture
 
-## ⚙️ Prerequisites
+The compiler front-end is organized into three main components:
 
-To run this project, you need the following:
+### Scanner
+- Converts source code into a sequence of tokens
+- Handles keywords, identifiers, numbers, and operators
+- Ignores comments enclosed in `{ ... }`
+- Reports lexical errors
 
-1.  **Python 3.8+**
-2.  **Graphviz (System Binary):** The software relies on the `dot` command.
-    *   *Windows:* Download the installer from [graphviz.org](https://graphviz.org/download/). **Important:** During installation, select "Add Graphviz to the system PATH for all users."
-    *   *Linux/Mac:* `sudo apt install graphviz` or `brew install graphviz`.
-3.  **Python Packages:**
-    *   `graphviz` (Python wrapper)
-    *   `Pillow` (Image processing)
+### Parser
+- Implements recursive descent parsing
+- Validates grammar rules
+- Builds the Abstract Syntax Tree (AST)
+- Reports syntax errors with contextual information
 
-## 📦 Installation
+### Graphical User Interface
+- Source code editor
+- Scanner output panel
+- Parser input panel
+- Syntax tree visualization window
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/yourusername/tiny-compiler.git
-    cd tiny-compiler
-    ```
+---
 
-2.  **Install Python dependencies:**
-    ```bash
-    pip install graphviz pillow
-    ```
+## Supported TINY Grammar
 
-3.  **Verify Graphviz:**
-    Open your terminal and type `dot -V`. If it returns a version number, you are ready to go.
+### Statements
+- `if`
+- `repeat`
+- `read`
+- `write`
+- Assignment (`:=`)
 
-## 🚀 Usage
-
-1.  **Run the GUI:**
-    ```bash
-    python tiny_gui.py
-    ```
-
-2.  **Workflow:**
-    *   **Step 1:** Paste your TINY code into the "TINY Source" box or click **Load Source File**.
-    *   **Step 2:** Click **Scanner + Parser (Full Pipeline)** to see immediate results.
-    *   **Step 3:** A new window will pop up showing the generated Syntax Tree. Use the scroll wheel to zoom.
-
-### Example TINY Code
-```pascal
-read x;
-if 0 < x then
-  fact := 1;
-  repeat
-    fact := fact * x;
-    x := x - 1
-  until x = 0;
-  write fact
-end
-```
-
-## 📐 TINY Language Grammar
-
-The parser implements the following BNF (Backus-Naur Form) grammar:
-
-```ebnf
-program       ::= stmt_sequence
-stmt_sequence ::= statement { ";" statement }
-statement     ::= if_stmt | repeat_stmt | assign_stmt | read_stmt | write_stmt
-if_stmt       ::= "if" exp "then" stmt_sequence [ "else" stmt_sequence ] "end"
-repeat_stmt   ::= "repeat" stmt_sequence "until" exp
-assign_stmt   ::= identifier ":=" exp
-read_stmt     ::= "read" identifier
-write_stmt    ::= "write" exp
-exp           ::= simple_exp [ ("<" | "=") simple_exp ]
-simple_exp    ::= term { ("+" | "-") term }
-term          ::= factor { ("*" | "/") factor }
-factor        ::= "(" exp ")" | number | identifier
-```
-
-## 📂 Project Structure
-
+### Control Structures
 ```text
-.
-├── scanner_4.py      # Lexical Analyzer logic (StateMachine implementation)
-├── parser_core.py    # Recursive Descent Parser & AST Node definitions
-├── tiny_gui.py       # Main Entry Point & Tkinter GUI
-└── README.md         # Documentation
-```
-
-## 🔧 Troubleshooting
-
-**Error: "Graphviz dot.exe not found"**
-1.  Ensure you have installed the Graphviz **software** (not just the pip package).
-2.  On Windows, check your environment variables to ensure `C:\Program Files\Graphviz\bin` (or similar) is in your **PATH**.
-3.  Restart your IDE or Terminal after installing Graphviz.
-
-**Error: "Unclosed comment" or "Invalid Token"**
-*   Ensure comments are enclosed in curly braces `{ comment }`.
-*   Ensure assignment uses `:=` and checks for equality use `=`.
-
-***
-
-*Developed for the Compiler Construction Course.*
+if <exp> then <stmt-seq> [else <stmt-seq>] end
+repeat <stmt-seq> until <exp>

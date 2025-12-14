@@ -1,125 +1,120 @@
-TINY Language Compiler - Scanner & Parser
+🧩 TINY Language Compiler
+🔍 Scanner & 🌳 Recursive Descent Parser with Syntax Tree Visualization
+📄 Abstract
 
-A robust, Python-based compiler front-end for the TINY language. This project implements a Lexical Analyzer (Scanner) and a Recursive Descent Parser, wrapped in a modern Tkinter GUI that visualizes the Syntax Tree using Graphviz.
+This project presents the design and implementation of a compiler front-end for the TINY programming language, developed using Python. The system implements two fundamental compilation phases: Lexical Analysis (Scanning) and Syntax Analysis (Parsing) using a Recursive Descent Parser.
+A modern graphical user interface (GUI) built with Tkinter enables interactive source code editing, compilation pipeline execution, and visual exploration of the Abstract Syntax Tree (AST) using Graphviz.
 
-🚀 Features
+This project is primarily intended for academic and educational use, particularly in Compiler Design and Programming Languages courses.
 
-Lexical Analysis: Scans TINY source code to generate a stream of tokens (Keywords, Operators, Identifiers, Literals).
+🎯 Objectives
 
-Recursive Descent Parsing: Validates the token stream against the TINY grammar and builds an Abstract Syntax Tree (AST).
+The primary objectives of this project are to:
 
-AST Visualization: Generates and displays high-quality graphical representations of the Syntax Tree using Graphviz.
+🔹 Implement a Lexical Analyzer for tokenizing TINY source code
 
-Interactive GUI:
+🔹 Develop a Recursive Descent Parser that validates grammar rules
 
-Built-in Text Editor for TINY source code.
+🔹 Construct a structured Abstract Syntax Tree (AST)
 
-Split-view for Scanner output (tokens) and Parser input.
+🔹 Provide an interactive GUI for compilation stages
 
-Dark/Light Mode support.
+🔹 Visualize syntax trees using Graphviz
 
-Zoom and Pan controls for the Syntax Tree viewer.
+🔹 Enhance conceptual understanding of compiler front-end design
 
-Error Handling: Detailed error reporting for both lexical and syntactic errors.
+🧠 System Overview
 
-🛠️ Prerequisites
+The compiler front-end is organized into three main components:
 
-Before running the application, ensure you have the following installed:
+🔍 Scanner Module
 
-1. Python 3.x
+Performs lexical analysis
 
-Ensure Python is installed and added to your system PATH.
+Converts source code into a stream of tokens
 
-2. Graphviz (System Software)
+Detects and reports lexical errors
 
-This project requires the Graphviz software to render trees.
+🌳 Parser Module
 
-Windows: Download Installer. During installation, select "Add Graphviz to the system PATH for all users".
+Implements recursive descent parsing
 
-Linux: sudo apt-get install graphviz
+Validates syntax according to TINY grammar
 
-Mac: brew install graphviz
+Builds the Abstract Syntax Tree (AST)
 
-3. Python Libraries
+🖥️ GUI Module
 
-Install the required Python packages:
+Manages user interaction and file I/O
 
-pip install graphviz pillow
+Displays scanner and parser outputs
 
+Renders AST visualizations
 
-(Note: tkinter is usually included with Python installations. If missing on Linux, install python3-tk)
+✨ Features
+🔎 Lexical Analysis
 
-📂 Project Structure
+Token classification: keywords, identifiers, numbers, operators
 
-File
+Comment handling using { ... }
 
-Description
+Clear and descriptive error messages
 
-tiny_gui.py
+🌲 Recursive Descent Parsing
 
-Entry Point. The main GUI application. Handles user interaction, file I/O, and invokes the scanner/parser.
+Full support for standard TINY grammar
 
-scanner_4.py
+AST generation with hierarchical structure
 
-The Scanner. Contains the state machine logic to tokenize TINY source code.
+Syntax error detection with contextual feedback
 
-parser_core.py
+🖼️ Syntax Tree Visualization
 
-The Parser. Defines the ASTNode structure and implements recursive descent logic to build the tree.
+High-quality AST rendering via Graphviz
 
-⚠️ Important: Ensure the parser file is named parser_core.py (not parser_core (1).py) so tiny_gui.py can import it correctly.
+Zoom and pan support for large trees
 
-🏃‍♂️ How to Run
+🖥️ Graphical User Interface
 
-Clone or download this repository.
+Built-in TINY source code editor
 
-Open your terminal/command prompt in the project folder.
+Separate views for:
 
-Run the GUI:
+Scanner output (tokens)
 
-python tiny_gui.py
+Parser input
 
+One-click Full Pipeline Execution
 
-📖 Usage Guide
+🌗 Dark / Light mode toggle
 
-Load Source:
+📐 Supported TINY Grammar
+🧾 Statements
 
-Click "Load Source File" to open a .txt file containing TINY code.
+if
 
-Alternatively, type or paste code directly into the "TINY Source" text box.
+repeat
 
-Scan:
+read
 
-Click "Run Scanner". The tokens will appear in the "Scanner Output" panel.
+write
 
-This output is automatically copied to the "Parser Input" panel.
+Assignment (:=)
 
-Parse:
+🔁 Control Structures
+if <exp> then <stmts> [else <stmts>] end
+repeat <stmts> until <exp>
 
-Click "Parse → Syntax Tree".
+➕ Expressions
 
-If the code is valid, a new window will pop up showing the generated Syntax Tree.
+Arithmetic: + - * /
 
-Full Pipeline:
+Relational: < =
 
-Click "Scanner + Parser (Full Pipeline)" to run both steps instantly.
+💬 Comments
+{ This is a comment }
 
-📝 TINY Language Grammar
-
-This compiler supports the standard TINY grammar:
-
-Statements: if, repeat, read, write, assignment (:=).
-
-Conditions: if <exp> then <stmts> [else <stmts>] end.
-
-Loops: repeat <stmts> until <exp>.
-
-Expressions: Supports arithmetic (+, -, *, /) and comparison (<, =) operators.
-
-Comments: Enclosed in curly braces { ... }.
-
-Example Code
-
+🧪 Example TINY Program
 read x;
 if 0 < x then
   fact := 1;
@@ -130,11 +125,85 @@ if 0 < x then
   write fact
 end
 
+📂 Project Structure
+📁 File	📝 Description
+tiny_gui.py	Main entry point and GUI controller
+scanner_4.py	Lexical Analyzer implementation
+parser_core.py	Recursive Descent Parser and AST logic
 
-🎨 Themes
+⚠️ Important
+The parser file must be named exactly parser_core.py.
+Incorrect naming will result in import errors.
 
-The GUI includes a toggle for Dark Mode and Light Mode (default). Click the "Toggle Dark/Light" button in the top right corner to switch themes.
+🛠️ Installation & Requirements
+🧰 Software Requirements
 
-🤝 Contributing
+Python 3.x
 
-Feel free to fork this project and submit pull requests. Bug reports and feature suggestions are welcome.
+Graphviz (system installation)
+
+📦 Python Dependencies
+pip install graphviz pillow
+
+
+🐧 Linux users may need:
+
+sudo apt-get install python3-tk
+
+▶️ Execution Instructions
+python tiny_gui.py
+
+
+Steps:
+
+Load or type TINY source code
+
+Run the Scanner
+
+Execute the Parser
+
+View the generated Syntax Tree
+
+Optionally run the Full Pipeline
+
+🎓 Educational Value
+
+This project demonstrates:
+
+✔ Practical lexical and syntactic analysis
+
+✔ Recursive descent parsing techniques
+
+✔ Abstract Syntax Tree construction
+
+✔ Integration of theory with a functional compiler tool
+
+It is suitable for:
+
+Compiler Design
+
+Formal Languages
+
+Programming Language Principles
+
+🚧 Future Enhancements
+
+🧠 Semantic analysis & symbol tables
+
+🧾 Type checking
+
+⚙ Intermediate code generation
+
+🚀 Optimization phases
+
+📤 AST export (JSON / XML)
+
+📜 License
+
+This project is intended for academic and educational use.
+Users are free to modify and extend it for learning, teaching, and research purposes.
+
+🤝 Contributions
+
+Contributions are welcome.
+Feel free to fork the repository, improve functionality, or extend compiler stages.

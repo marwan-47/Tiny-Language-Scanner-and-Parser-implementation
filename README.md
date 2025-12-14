@@ -1,6 +1,9 @@
 Here is a professional, clean, and comprehensive `README.md` file designed specifically for your codebase. It highlights the features, explains the installation of the critical Graphviz dependency, and documents the grammar.
 
 ***
+## Related Repositories
+
+- [Similar-Repository](https://github.com/Kemogaber/Tiny-Language-Scanner-and-Parser) - Alternative Implementation close to **Sections Approach**
 
 # TINY Language Compiler & Visualizer
 

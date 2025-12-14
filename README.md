@@ -10,7 +10,7 @@ A robust compiler frontend for the **TINY** language, featuring a custom Lexical
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Educational-orange)
 
-## 📋 Table of Contents
+## Table of Contents
 - [Overview](#-overview)
 - [Features](#-features)
 - [Prerequisites](#-prerequisites)
@@ -20,7 +20,7 @@ A robust compiler frontend for the **TINY** language, featuring a custom Lexical
 - [Project Structure](#-project-structure)
 - [Troubleshooting](#-troubleshooting)
 
-## 📖 Overview
+## Overview
 
 This project implements the first two phases of a compiler for the TINY educational language:
 
@@ -28,7 +28,7 @@ This project implements the first two phases of a compiler for the TINY educatio
 2.  **Parser (`parser_core.py`):** Takes the token stream and builds an Abstract Syntax Tree (AST) using recursive descent logic.
 3.  **Visualization (`tiny_gui.py`):** A graphical interface that allows users to write code, view tokens, and interactively explore the generated Syntax Tree.
 
-## ✨ Features
+## Features
 
 *   **Full Pipeline Visualization:** View Source Code, Token Lists, and the Syntax Tree side-by-side.
 *   **Interactive Syntax Tree:** 
@@ -41,7 +41,7 @@ This project implements the first two phases of a compiler for the TINY educatio
     *   File Save/Load functionality.
 *   **Error Handling:** Reports lexical errors (e.g., unclosed comments) and syntax errors (e.g., missing semicolons).
 
-## ⚙️ Prerequisites
+## Prerequisites
 
 To run this application, you must have the following installed:
 
@@ -53,7 +53,7 @@ To run this application, you must have the following installed:
     *   **Linux:** `sudo apt install graphviz`
     *   **Mac:** `brew install graphviz`
 
-## 📦 Installation
+## Installation
 
 1.  **Clone the repository:**
     ```bash
@@ -66,7 +66,7 @@ To run this application, you must have the following installed:
     pip install graphviz pillow
     ```
 
-## 🚀 Usage
+## Usage
 
 1.  **Launch the GUI:**
     ```bash
@@ -92,7 +92,7 @@ if 0 < x then
 end
 ```
 
-## 📐 TINY Language Grammar
+## TINY Language Grammar
 
 The parser implements the following BNF (Backus-Naur Form) grammar:
 
@@ -111,7 +111,7 @@ term          ::= factor { ("*" | "/") factor }
 factor        ::= "(" exp ")" | number | identifier
 ```
 
-## 📂 Project Structure
+## Project Structure
 
 | File | Description |
 | :--- | :--- |
@@ -119,7 +119,7 @@ factor        ::= "(" exp ")" | number | identifier
 | `scanner_4.py` | State-machine implementation for tokenizing TINY source code. |
 | `parser_core.py` | Defines `ASTNode` and the `Parser` class which consumes tokens to build the tree. |
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### "Graphviz dot.exe not found"
 If you see an error claiming Graphviz is missing:
